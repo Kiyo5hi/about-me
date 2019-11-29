@@ -16,6 +16,8 @@
         overflow: hidden;
       }
       body {
+        background-color: #fadad8;
+        color: #353848;
         height: 100%;
         display: -webkit-box;
         display: -ms-flexbox;
@@ -56,6 +58,9 @@
         animation: 1.5s dropIn;
       }
       .profile {
+        background: #f0e5de;
+        color: #534847;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         -webkit-box-flex: 0.8;
         -ms-flex: 0.8;
         flex: 0.8;
@@ -72,11 +77,9 @@
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center;
-        background: cornsilk;
         border-top-left-radius: 1rem;
         border-bottom-left-radius: 1rem;
         padding: 1rem;
-        text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
       }
       img {
         height: 7rem;
@@ -89,6 +92,8 @@
         font-size: 13px;
       }
       .portfolio {
+        background-color: #d9d4cf;
+        color: #7c7877;
         -webkit-box-flex: 2;
         -ms-flex: 2;
         flex: 2;
@@ -105,7 +110,6 @@
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
-        background: darkgray;
         border-top-right-radius: 1rem;
         border-bottom-right-radius: 1rem;
         padding: 1rem;
@@ -115,7 +119,7 @@
         padding: 0 1rem 0 1rem;
       }
       .social {
-        min-width: 5rem;
+        min-width: 6rem;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -134,6 +138,7 @@
         animation: 1.5s jumpIn;
       }
       svg {
+        fill: #534847;
         height: 20px;
         width: 20px;
         -webkit-transition: -webkit-transform 0.25s;
@@ -144,6 +149,12 @@
       svg:hover {
         -webkit-transform: scale(1.2, 1.2);
         transform: scale(1.2, 1.2);
+      }
+      .tag {
+        background: #ef9e9f;
+        color: #f8f8ff;
+        padding: 0.1rem 0.2rem 0.1rem 0.2rem;
+        border-radius: 0.2rem;
       }
       @media (max-width: 512px) {
         main {
@@ -235,7 +246,7 @@
       <div class="wrapper">
         <div class="profile">
           <div class="avatar">
-            <img src="./avatar.jpg" alt="Kiyoshi's Avatar" />
+            <img src="https://cdn.jsdelivr.net/npm/kys/avatar/128x128.png" alt="Kiyoshi's Avatar" />
           </div>
           <div class="name"><h1>Kiyoshi</h1></div>
           <div class="status">College Student</div>
@@ -288,6 +299,10 @@
         </div>
       </div>
     </main>
-    <footer><div class="copyright">Made with &#x1F495; by Kiyoshi</div></footer>
+    <footer>
+      <div class="copyright">
+        Made with &#x1F495; <span class="tag">by Kiyoshi</span>
+      </div>
+    </footer>
   </body>
 </html>
