@@ -2,11 +2,11 @@ name: Build
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ghcr.io/kiyo5hi/k1yoshi-com
+  IMAGE_NAME: ghcr.io/kiyo5hi/about-me
 
 jobs:
   build_and_push:
@@ -93,7 +93,7 @@ jobs:
         with:
           name: digests
           path: /tmp/digests
-      
+
       - name: List all digests
         run: |
           ls /tmp/digests
