@@ -78,7 +78,7 @@ jobs:
   merge_and_deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       packages: write
     needs:
       - build_and_push
@@ -97,7 +97,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ${{ env.IMAGE_NAME }}
-          flavor: latest=true
+          tags: type=sha
 
       - name: Log into registry ${{ env.REGISTRY }}
         if: github.event_name != 'pull_request'
@@ -116,3 +116,16 @@ jobs:
       - name: Inspect image
         run: |
           docker buildx imagetools inspect ${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.version }}
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Update appVersion
+        run: |
+          cd helm
+          sed -i 's/appVersion:.*/appVersion: ${{ steps.meta.outputs.version }}/' Chart.yaml
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add Chart.yaml
+          git commit -m "build(deploy): updated appVersion (${{ steps.meta.outputs.version }})"
+          git push
