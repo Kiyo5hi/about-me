@@ -44,7 +44,7 @@ ingress:
         - path: /
           pathType: Prefix
   tls:
-    - secretName: about-me-tls-secret
+    - secretName: about-me-tls
       hosts:
         - kiyo5hi.com
   #  - secretName: chart-example-tls
