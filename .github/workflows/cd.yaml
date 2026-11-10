@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -39,6 +41,11 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      - name: Verify the served image before publishing
+        run: |
+          docker build --tag about-me-check .
+          python3 scripts/verify-image.py about-me-check
 
       - name: Build and push Docker image
         id: push

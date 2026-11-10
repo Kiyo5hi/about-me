@@ -1,6 +1,7 @@
 :80 {
     root * /srv
     file_server {
+        hide .git .github .dockerignore Dockerfile Caddyfile AGENTS.md
         precompressed zstd br gzip
     }
 }
